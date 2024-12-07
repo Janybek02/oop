@@ -1,10 +1,17 @@
 public class Main {
     public static void main(String[] args) {
-        Person person = new Person("Janybek", 22, "Orozbekov");
-        Employees employees = new Employees("Janybek", 22, "Orozbekov", "Janybek000233", 234, 234);
-        System.out.println(employees.toString());
-        System.out.println(person.toString());
-        System.out.println();
+//        Person person = new Person("Janybek", 22, "Orozbekov");
+        Developer allInformation   = new Developer( "Janybek", 22, "Orozbekov", "Janybek000233", 234, 234, "junior", "Beckend", 12);
+        Developer developer = new Developer("Wiil",  22, "Smitt", "ewewew", 3333, 9009994, "Senior", "Front-end",22  );
+        Person person = new Person("Who knows", 11,"some-one");
+        String[] array;
+        array = new String[]{String.valueOf(allInformation), String.valueOf(developer), String.valueOf(person)};
+
+        for (int i = 0; i < array.length; i++) {
+            System.out.println(array[i]);
+        }
+
+
     }
 }
 //Инкапсуляция и сокрытие
@@ -31,21 +38,6 @@ class Person {
         this.age = age;
         this.surname = surname;
     }
-
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     @Override
     public String toString() {
         return "Person{" +
@@ -55,12 +47,11 @@ class Person {
                 '}';
     }
 
-    public String getSurnameName(String name, String surname) {
-        if (surname.equals("Janybek") || surname.equals("Orozbekov")) {
-            return "i know you, and i have an information about you" ;
-        } else {
-            return "i dont know, who are you";
-        }
+    public String getName() {
+        return "Hello my name is " + this.name;
+    }
+    public String getFullName(){
+        return "Hell my name is " + name + " " + surname;
     }
 }
 
@@ -81,36 +72,13 @@ class Employees extends Person {
         this.number = number;
 
     }
-
-
-
-    public int getInn() {
-        return inn;
+    public String getName() {
+        return "Hello my name is " + this.name;
     }
 
-    public void setInn(int inn) {
-        this.inn = inn;
-    }
-
-
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
-    public String getNameCard() {
-        return nameCard;
-    }
-
-    public void setNameCard(String nameCard) {
-        this.nameCard = nameCard;
-    }
     @Override
     public String toString() {
-        return "Employees{" +
+        return super.toString() +  "Employees{" +
                 "inn=" + inn +
                 ", number=" + number +
                 ", nameCard='" + nameCard + '\'' +
@@ -136,7 +104,7 @@ class Developer extends Employees {
 
     @Override
     public String toString() {
-        return "Developer{" +
+        return super.toString() + "Developer{" +
                 "level='" + level + '\'' +
                 ", position='" + position + '\'' +
                 ", language=" + language +
